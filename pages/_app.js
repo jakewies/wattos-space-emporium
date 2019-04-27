@@ -5,7 +5,8 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 const theme = {
   colors: {
     black: '#444445',
-    white: '#FEF6E8'
+    white: '#FEF6E8',
+    grey: 'rgba(68,68,69,0.1)'
   }
 };
 
