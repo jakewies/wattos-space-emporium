@@ -1,6 +1,13 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+const theme = {
+  colors: {
+    black: '#444445',
+    white: '#FEF6E8'
+  }
+};
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -18,8 +25,12 @@ class MyApp extends App {
 
     return (
       <Container>
-        <Component {...pageProps} />
-        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <>
+            <Component {...pageProps} />
+            <GlobalStyle />
+          </>
+        </ThemeProvider>
       </Container>
     );
   }
@@ -30,6 +41,8 @@ export default MyApp;
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
+    color: ${({ theme }) => theme.colors.black};
+    background-color: ${({ theme }) => theme.colors.white};
   }
 
   *,
