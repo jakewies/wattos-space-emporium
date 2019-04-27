@@ -15,10 +15,12 @@
   "dependencies": {
     "next": "^8.1.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "babel-eslint": "10.x",
+    "babel-plugin-styled-components": "^1.10.0",
     "eslint": "^5.16.0",
     "eslint-config-react-app": "^4.0.0",
     "eslint-plugin-flowtype": "2.x",
