@@ -39,22 +39,6 @@ class MyApp extends App {
 export default MyApp;
 
 const GlobalStyle = createGlobalStyle`
-  html {
-    box-sizing: border-box;
-    color: ${({ theme }) => theme.colors.black};
-    background-color: ${({ theme }) => theme.colors.white};
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-
-  html, body, #__next {
-    height: 100%
-  }
-
   /* http://meyerweb.com/eric/tools/css/reset/ 
     v2.0 | 20110126
     License: none (public domain)
@@ -111,5 +95,23 @@ const GlobalStyle = createGlobalStyle`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+
+  /* End Reset */
+  html {
+    box-sizing: border-box;
+    color: ${({ theme }) => theme.colors.black};
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: 18px;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  html, body, #__next {
+    height: 100%
   }
 `;
