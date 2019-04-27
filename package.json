@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "format": "yarn prettier --write",
     "validate": "yarn lint && yarn prettier --list-different",
     "prettier": "prettier \"./**/*.{js,jsx,json,css,md}\""
@@ -18,6 +18,14 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "babel-eslint": "10.x",
+    "eslint": "^5.16.0",
+    "eslint-config-react-app": "^4.0.0",
+    "eslint-plugin-flowtype": "2.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "1.5.0",
     "husky": "^2.1.0",
     "lint-staged": "^8.1.5",
     "prettier": "^1.17.0"
@@ -28,9 +36,21 @@
     }
   },
   "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint"
+    ],
     "*.{js,jsx,json,css}": [
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
