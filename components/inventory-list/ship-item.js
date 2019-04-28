@@ -2,23 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import Detail from './Detail';
 
-function ShipItem({ model, manufacturer, shipClass, credits }) {
-  return (
-    <Container>
-      <ImageWrapper>IMAGE</ImageWrapper>
-      <DetailsWrapper>
-        <Detail label="Model" value={model} />
-        <Detail label="Manufacturer" value={manufacturer} />
-        <Detail label="Class" value={shipClass} />
-        <Detail label="Credits" value={credits} />
-      </DetailsWrapper>
-      <ActionsWrapper>
-        <ActionButton>Add To Order</ActionButton>
-        <ActionButton>View Specs</ActionButton>
-      </ActionsWrapper>
-    </Container>
-  );
-}
+const ShipItem = ({ model, manufacturer, shipClass, credits }) => (
+  <Container>
+    <ImageWrapper>IMAGE</ImageWrapper>
+    <DetailsWrapper>
+      <Detail label="Model" value={model} />
+      <Detail label="Manufacturer" value={manufacturer} />
+      <Detail label="Class" value={shipClass} />
+      <Detail label="Credits" value={credits} />
+    </DetailsWrapper>
+    <ActionsWrapper>
+      <ActionButton>Add To Order</ActionButton>
+      <ActionButton>View Specs</ActionButton>
+    </ActionsWrapper>
+  </Container>
+);
 
 export default ShipItem;
 

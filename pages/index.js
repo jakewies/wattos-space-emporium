@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Layout, PageHeader, Select, ShipItem } from '../components';
+import { Layout, PageHeader, Select, InventoryList } from '../components';
 import firebase from '../lib/firebase';
 
 function Inventory() {
-  const [data, setData] = useState({});
+  const [inventory, setInventory] = useState({});
 
   useEffect(() => {
     const products = firebase.database().ref('products');
     products.on('value', snap => {
-      setData(snap.val());
+      const data = snap.val();
+
+      setInventory(
+        Object.keys(data).map(id => ({
+          ...data[id],
+          id: parseInt(id)
+        }))
+      );
     });
 
     return () => {
       products.off();
     };
   }, []);
-
-  console.log(data);
 
   return (
     <>
@@ -52,16 +57,11 @@ function Inventory() {
             <span>Showing 8 results</span>
           </ResultCount>
         </Toolbar>
-        <InventoryList>
-          <InventoryListItem>
-            <ShipItem
-              model={'Twin Ion Engine Starfighter'}
-              manufacturer={'Sienar Fleet Systems'}
-              shipClass={'Starfighter'}
-              credits={'1,143,350,000'}
-            />
-          </InventoryListItem>
-        </InventoryList>
+        {inventory.length ? (
+          <InventoryList data={inventory} />
+        ) : (
+          <div>Loading...</div>
+        )}
       </Layout>
     </>
   );
@@ -72,7 +72,6 @@ export default Inventory;
 const Toolbar = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 1.25rem;
 `;
 
 const ResultCount = styled.div`
@@ -92,7 +91,3 @@ const ResultCount = styled.div`
     font-size: 14px;
   }
 `;
-
-const InventoryList = styled.div``;
-
-const InventoryListItem = styled.div``;
