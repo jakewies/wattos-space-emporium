@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Layout, PageHeader, Select } from '../components';
+import { Layout, PageHeader, Select, ShipItem } from '../components';
 
 function Inventory() {
   return (
@@ -38,7 +38,16 @@ function Inventory() {
             <span>Showing 8 results</span>
           </ResultCount>
         </Toolbar>
-        <InventoryList>Im inventory list</InventoryList>
+        <InventoryList>
+          <InventoryListItem>
+            <ShipItem
+              model={'Twin Ion Engine Starfighter'}
+              manufacturer={'Sienar Fleet Systems'}
+              shipClass={'Starfighter'}
+              credits={'1,143,350,000'}
+            />
+          </InventoryListItem>
+        </InventoryList>
       </Layout>
     </>
   );
@@ -56,13 +65,12 @@ const ResultCount = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  height: ${({ theme }) => theme.pillHeight};
 
   > span {
     display: flex;
     align-items: center;
-    height: 100%;
-    padding: 1rem;
+    height: ${({ theme }) => theme.pillHeight};
+    padding: 0 1rem;
     background-color: ${({ theme }) => theme.colors.black};
     color: ${({ theme }) => theme.colors.white};
     border-radius: 100px;
@@ -72,3 +80,5 @@ const ResultCount = styled.div`
 `;
 
 const InventoryList = styled.div``;
+
+const InventoryListItem = styled.div``;
