@@ -103,7 +103,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     color: ${({ theme }) => theme.colors.black};
     background-color: ${({ theme }) => theme.colors.white};
-    font-size: 18px;
+    font-size: 16px;
   }
 
   *,

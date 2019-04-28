@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Layout } from '../components';
+import { Layout, PageHeader } from '../components';
 
 function Inventory() {
   return (
@@ -9,7 +9,9 @@ function Inventory() {
         <title>Inventory | Watto's Space Emporium</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Layout>Inventory page</Layout>
+      <Layout>
+        <PageHeader text="Inventory" />
+      </Layout>
     </>
   );
 }
