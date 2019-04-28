@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import { Layout, PageHeader, Select, ShipItem } from '../components';
+import firebase from '../lib/firebase';
 
 function Inventory() {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const products = firebase.database().ref('products');
+    products.on('value', snap => {
+      setData(snap.val());
+    });
+
+    return () => {
+      products.off();
+    };
+  }, []);
+
+  console.log(data);
+
   return (
     <>
       <Head>
