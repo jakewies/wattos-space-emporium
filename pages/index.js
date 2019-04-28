@@ -9,9 +9,14 @@ import {
   Loading
 } from '../components';
 import firebase from '../lib/firebase';
+import { getClasses, getManufacturers } from '../lib/utils';
+
+const ALL = 'All';
 
 function Inventory() {
-  const [inventory, setInventory] = useState({});
+  const [inventory, setInventory] = useState([]);
+  const [classFilter, setClassFilter] = useState(ALL);
+  const [manufacturerFilter, setManufacturerFilter] = useState(ALL);
 
   useEffect(() => {
     const products = firebase.database().ref('products');
@@ -31,6 +36,23 @@ function Inventory() {
     };
   }, []);
 
+  const classOptions = getClasses(inventory);
+  const manufacturerOptions = getManufacturers(inventory);
+  const filteredInventory = inventory.filter(spaceship => {
+    if (classFilter !== ALL && spaceship.class !== classFilter) {
+      return false;
+    }
+
+    if (
+      manufacturerFilter !== ALL &&
+      spaceship.manufacturer !== manufacturerFilter
+    ) {
+      return false;
+    }
+
+    return true;
+  });
+
   return (
     <>
       <Head>
@@ -42,28 +64,26 @@ function Inventory() {
         <Toolbar>
           <Select
             label="Class"
-            options={['Starfighter', 'Light freighter', 'Transport shuttle']}
-            onSelect={value => console.log(value)}
+            options={[ALL, ...classOptions]}
+            defaultValue={classFilter}
+            onSelect={value => setClassFilter(value)}
             style={{ marginRight: '1rem' }}
           />
           <Select
             label="Manufacturer"
-            options={[
-              'Sienar Fleet Systems',
-              'Incom Corporation',
-              'Koensayr Manufacturing',
-              'Corellian Engineering Corporation',
-              'Cygnus Spaceworks',
-              'Alliance Underground Engineering',
-              'Gial Ackbar'
-            ]}
-            onSelect={value => console.log(value)}
+            options={[ALL, ...manufacturerOptions]}
+            defaultValue={manufacturerFilter}
+            onSelect={value => setManufacturerFilter(value)}
           />
           <ResultCount>
             <span>Showing 8 results</span>
           </ResultCount>
         </Toolbar>
-        {inventory.length ? <InventoryList data={inventory} /> : <Loading />}
+        {inventory.length ? (
+          <InventoryList data={filteredInventory} />
+        ) : (
+          <Loading />
+        )}
       </Layout>
     </>
   );
