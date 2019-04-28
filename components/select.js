@@ -6,9 +6,10 @@ function Select({
   label = null,
   options = [],
   onSelect = null,
+  defaultValue = '',
   ...styledProps
 }) {
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState(defaultValue);
 
   const handleChange = event => {
     const { value } = event.target;
