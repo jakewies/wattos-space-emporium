@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Layout, PageHeader, Select, InventoryList } from '../components';
+import {
+  Layout,
+  PageHeader,
+  Select,
+  InventoryList,
+  Loading
+} from '../components';
 import firebase from '../lib/firebase';
 
 function Inventory() {
@@ -57,11 +63,7 @@ function Inventory() {
             <span>Showing 8 results</span>
           </ResultCount>
         </Toolbar>
-        {inventory.length ? (
-          <InventoryList data={inventory} />
-        ) : (
-          <div>Loading...</div>
-        )}
+        {inventory.length ? <InventoryList data={inventory} /> : <Loading />}
       </Layout>
     </>
   );
