@@ -17,9 +17,7 @@ function Inventory() {
             label="Class"
             options={['Starfighter', 'Light freighter', 'Transport shuttle']}
             onSelect={value => console.log(value)}
-            css={`
-              margin-right: 1rem;
-            `}
+            style={{ marginRight: '1rem' }}
           />
           <Select
             label="Manufacturer"
