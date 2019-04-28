@@ -24,6 +24,7 @@ const Content = styled.div`
   flex-direction: column;
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 1.5rem;
 `;
 
 const Main = styled.main`
