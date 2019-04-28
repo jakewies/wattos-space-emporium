@@ -7,7 +7,8 @@ const theme = {
     black: '#444445',
     white: '#FEF6E8',
     grey: 'rgba(68,68,69,0.1)'
-  }
+  },
+  pillHeight: '2.5rem'
 };
 
 class MyApp extends App {
