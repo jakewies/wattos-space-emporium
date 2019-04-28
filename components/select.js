@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaAngleDown } from 'react-icons/fa';
 
-function Select({ label = null, options = [], onSelect = null }) {
+function Select({
+  label = null,
+  options = [],
+  onSelect = null,
+  ...styledProps
+}) {
   const [selected, setSelected] = useState('');
 
   const handleChange = event => {
@@ -16,7 +21,7 @@ function Select({ label = null, options = [], onSelect = null }) {
   };
 
   return (
-    <Container>
+    <Container {...styledProps}>
       {label && <Label htmlFor={`${label}--select`}>{label}</Label>}
       <SelectWrapper withLabel={label}>
         <StyledSelect
