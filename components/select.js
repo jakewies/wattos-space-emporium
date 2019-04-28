@@ -49,7 +49,7 @@ const Container = styled.div`
   display: inline-flex;
   align-items: center;
   height: ${({ theme }) => theme.pillHeight};
-  font-size: 14px;
+  font-size: 0.875rem;
   user-select: none;
 `;
 
