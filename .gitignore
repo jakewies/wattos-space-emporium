@@ -1,0 +1,16 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.next
+.env
+.DS_Store
+
+yarn-debug.log*
+yarn-error.log*
