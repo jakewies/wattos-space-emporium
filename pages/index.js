@@ -39,7 +39,6 @@ function Inventory() {
     <>
       <Head>
         <title>Inventory | Watto's Space Emporium</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Layout>
         <PageHeader text="Inventory" />

@@ -22,9 +22,18 @@ const ShipItem = ({ id, model, manufacturer, shipClass, credits }) => (
 
 export default ShipItem;
 
+const mobileBreakpoint = '850px';
+
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+  max-width: 500px;
   margin-bottom: 4rem;
+
+  @media (min-width: ${mobileBreakpoint}) {
+    flex-direction: row;
+    max-width: 100%;
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -32,10 +41,21 @@ const Container = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  margin-right: 2rem;
+  margin-bottom: 2rem;
 
   > img {
-    max-width: 450px;
+    width: 100%;
+  }
+
+  @media (min-width: ${mobileBreakpoint}) {
+    width: 40%;
+    margin-bottom: 0;
+    margin-right: 2rem;
+
+    > img {
+      width: 100%;
+      max-width: 450px;
+    }
   }
 `;
 
