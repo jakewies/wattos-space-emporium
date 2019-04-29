@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { FaDatabase, FaRocket } from 'react-icons/fa';
 import { CartContext } from '../cart-context';
@@ -8,13 +9,17 @@ function Header() {
 
   return (
     <StyledHeader>
-      <Logo>
-        <FaRocket />
-        <h1>Watto's Spaceship Emporium</h1>
-      </Logo>
-      <CartIcon count={cartCount}>
-        <FaDatabase />
-      </CartIcon>
+      <Link href="/">
+        <Logo>
+          <FaRocket />
+          <h1>Watto's Spaceship Emporium</h1>
+        </Logo>
+      </Link>
+      <Link href="/cart">
+        <CartIcon count={cartCount}>
+          <FaDatabase />
+        </CartIcon>
+      </Link>
     </StyledHeader>
   );
 }
@@ -36,6 +41,7 @@ const Logo = styled.div`
   border: 4px solid ${({ theme }) => theme.colors.black};
   border-radius: 100px;
   padding: 0.875rem 1rem;
+  cursor: pointer;
 
   @media (min-width: ${mobileBreakpoint}) {
     padding: 1.5rem 2rem;

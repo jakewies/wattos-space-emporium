@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Detail from '../detail';
 import { CartContext } from '../cart-context';
+import Button from '../button';
 
 function ShipItem({ id, model, manufacturer, shipClass, credits, inCart }) {
   const { addToCart, removeFromCart } = useContext(CartContext);
@@ -99,21 +100,9 @@ const ActionsWrapper = styled.div`
   display: flex;
 `;
 
-const ActionButton = styled.button`
+const ActionButton = styled(Button)`
   flex-basis: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   max-width: 175px;
-  height: ${({ theme }) => theme.pillHeight};
-  padding: 0 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  background-color: ${({ theme }) => theme.colors.grey};
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  outline: none;
 
   &:first-child {
     margin-right: 1rem;

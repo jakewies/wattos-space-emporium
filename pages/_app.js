@@ -8,7 +8,9 @@ const theme = {
     black: '#444445',
     white: '#FEF6E8',
     grey: 'rgba(68,68,69,0.1)',
-    blue: '#0E58ED'
+    darkgrey: '#B0AAA0',
+    blue: '#0E58ED',
+    darkblue: '#0C49C2'
   },
   pillHeight: '2.5rem'
 };

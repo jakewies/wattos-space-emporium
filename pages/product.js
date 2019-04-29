@@ -6,7 +6,8 @@ import {
   Layout,
   PageHeader,
   ProductsContext,
-  CartContext
+  CartContext,
+  Button
 } from '../components';
 
 Product.getInitialProps = async ({ query }) => {
@@ -64,19 +65,6 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const ActionButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: ${({ theme }) => theme.pillHeight};
-  padding: 0 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  background-color: ${({ theme }) => theme.colors.grey};
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  outline: none;
-  width: 100%;
+const ActionButton = styled(Button)`
   max-width: 400px;
 `;

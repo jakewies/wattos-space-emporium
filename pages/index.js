@@ -5,6 +5,7 @@ import {
   Layout,
   PageHeader,
   Select,
+  NoProducts,
   InventoryList,
   ProductsContext
 } from '../components';
@@ -62,9 +63,7 @@ function Inventory() {
         {filteredProducts.length ? (
           <InventoryList data={filteredProducts} />
         ) : (
-          <NoProducts>
-            <span>No products found</span>
-          </NoProducts>
+          <NoProducts />
         )}
       </Layout>
     </>
@@ -114,20 +113,5 @@ const ResultCount = styled.div`
     border-radius: 100px;
     font-weight: 600;
     font-size: 12px;
-  }
-`;
-
-const NoProducts = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem;
-
-  > span {
-    font-size: 2rem;
-    font-weight: 400;
-    font-family: menlo, monospace, sans-serif;
-    background-color: ${({ theme }) => theme.colors.grey};
-    color: ${({ theme }) => theme.colors.black};
   }
 `;
