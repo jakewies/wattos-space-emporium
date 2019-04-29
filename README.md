@@ -25,6 +25,8 @@ No configuration needed. The project was initially setup using `env` variables f
 
 I designed the UI for this project using [Figma](https://www.figma.com). The design files can be viewed in the browser [here](https://www.figma.com/file/e4Swj3D347NrpPkxDh2Jvkdy/Watto-s-Spaceship-Emporium).
 
+The goal of my design was to make it feel like you were perusing Watto's inventory on a futuristic tablet in his store on Tatooine.
+
 ## Architectural decisions
 
 ### State management
