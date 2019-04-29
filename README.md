@@ -5,6 +5,8 @@
 - Data stored in a [Firebase Realtime Database](https://firebase.google.com/docs/database)
 - Deployed with [`now`](https://zeit.co/now)
 
+View the application [here](https://wattos-space-emporium.jakewies.now.sh)
+
 ## Develop
 
 ``` 
