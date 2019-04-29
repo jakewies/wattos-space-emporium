@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { FaDatabase, FaRocket } from 'react-icons/fa';
+import { FaShoppingBag, FaRocket } from 'react-icons/fa';
 import { CartContext } from '../cart-context';
 
 function Header() {
@@ -17,7 +17,7 @@ function Header() {
       </Link>
       <Link href="/cart">
         <CartIcon count={cartCount}>
-          <FaDatabase />
+          <FaShoppingBag />
         </CartIcon>
       </Link>
     </StyledHeader>
@@ -82,8 +82,8 @@ const CartIcon = styled.div`
     &::after {
       content: '${count}';
       position: absolute;
-      top: 7px;
-      right: 5px;
+      bottom: 9px;
+      right: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
