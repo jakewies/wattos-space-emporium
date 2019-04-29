@@ -10,9 +10,11 @@
     "lint": "eslint .",
     "format": "yarn prettier --write",
     "validate": "yarn lint && yarn prettier --list-different",
-    "prettier": "prettier \"./**/*.{js,jsx,json,css,md}\""
+    "prettier": "prettier \"./**/*.{js,jsx,json,css,md}\"",
+    "now-build": "next build"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^7.0.0",
     "firebase": "^5.10.1",
     "memoize-one": "^5.0.4",
