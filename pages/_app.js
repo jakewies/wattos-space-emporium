@@ -1,6 +1,7 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ProductsProvider } from '../components';
 
 const theme = {
   colors: {
@@ -28,10 +29,10 @@ class MyApp extends App {
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <>
+          <ProductsProvider>
             <Component {...pageProps} />
             <GlobalStyle />
-          </>
+          </ProductsProvider>
         </ThemeProvider>
       </Container>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import {
@@ -6,33 +6,20 @@ import {
   PageHeader,
   Select,
   InventoryList,
-  Loading
+  Loading,
+  ProductsContext
 } from '../components';
-import firebase from '../lib/firebase';
 import { getClasses, getManufacturers } from '../lib/utils';
 
 const ALL = 'All';
 
-Inventory.getInitialProps = async () => {
-  const productsSnapshot = await firebase
-    .database()
-    .ref('products')
-    .once('value');
-  const productsMap = productsSnapshot.val();
-  const products = Object.keys(productsMap).map(productId => ({
-    ...productsMap[productId],
-    id: parseInt(productId)
-  }));
-
-  return { products };
-};
-
-function Inventory({ products }) {
+function Inventory() {
+  const products = useContext(ProductsContext);
   const [classFilter, setClassFilter] = useState(ALL);
   const [manufacturerFilter, setManufacturerFilter] = useState(ALL);
-
   const classOptions = getClasses(products);
   const manufacturerOptions = getManufacturers(products);
+
   const filteredProducts = products.filter(product => {
     if (classFilter !== ALL && product.class !== classFilter) {
       return false;
