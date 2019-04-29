@@ -1,24 +1,43 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Detail from './Detail';
+import { CartContext } from '../cart-context';
 
-const ShipItem = ({ id, model, manufacturer, shipClass, credits }) => (
-  <Container>
-    <ImageWrapper>
-      <img src={`/static/images/products/${id}/thumbnail.jpg`} alt={model} />
-    </ImageWrapper>
-    <DetailsWrapper>
-      <Detail label="Model" value={model} />
-      <Detail label="Manufacturer" value={manufacturer} />
-      <Detail label="Class" value={shipClass} />
-      <Detail label="Credits" value={credits} />
-      <ActionsWrapper>
-        <ActionButton>Add To Order</ActionButton>
-        <ActionButton>View Specs</ActionButton>
-      </ActionsWrapper>
-    </DetailsWrapper>
-  </Container>
-);
+function ShipItem({ id, model, manufacturer, shipClass, credits, inCart }) {
+  const { addToCart, removeFromCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    addToCart(id);
+  };
+
+  const handleRemoveFromCart = () => {
+    removeFromCart(id);
+  };
+
+  return (
+    <Container>
+      <ImageWrapper>
+        <img src={`/static/images/products/${id}/thumbnail.jpg`} alt={model} />
+      </ImageWrapper>
+      <DetailsWrapper>
+        <Detail label="Model" value={model} />
+        <Detail label="Manufacturer" value={manufacturer} />
+        <Detail label="Class" value={shipClass} />
+        <Detail label="Credits" value={credits} />
+        <ActionsWrapper>
+          {inCart ? (
+            <ActionButton onClick={handleRemoveFromCart}>
+              Remove From Cart
+            </ActionButton>
+          ) : (
+            <ActionButton onClick={handleAddToCart}>Add To Cart</ActionButton>
+          )}
+          <ActionButton>View Specs</ActionButton>
+        </ActionsWrapper>
+      </DetailsWrapper>
+    </Container>
+  );
+}
 
 export default ShipItem;
 

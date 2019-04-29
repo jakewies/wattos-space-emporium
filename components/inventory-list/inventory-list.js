@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import ShipItem from './ship-item';
+import { CartContext } from '../cart-context';
 
-const InventoryList = ({ data }) => (
-  <StyledInventoryList>
-    <InventoryListItem>
-      {data.map(spaceship => (
-        <ShipItem
-          key={spaceship.id}
-          id={spaceship.id}
-          model={spaceship.name}
-          manufacturer={spaceship.manufacturer}
-          shipClass={spaceship.class}
-          credits={spaceship.cost_in_credits}
-        />
-      ))}
-    </InventoryListItem>
-  </StyledInventoryList>
-);
+function InventoryList({ data }) {
+  const { cart } = useContext(CartContext);
+
+  return (
+    <StyledInventoryList>
+      <InventoryListItem>
+        {data.map(spaceship => (
+          <ShipItem
+            key={spaceship.id}
+            id={spaceship.id}
+            model={spaceship.name}
+            manufacturer={spaceship.manufacturer}
+            shipClass={spaceship.class}
+            credits={spaceship.cost_in_credits}
+            inCart={cart.indexOf(spaceship.id) > -1}
+          />
+        ))}
+      </InventoryListItem>
+    </StyledInventoryList>
+  );
+}
 
 export default InventoryList;
 

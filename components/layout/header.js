@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { FaDatabase, FaRocket } from 'react-icons/fa';
+import { CartContext } from '../cart-context';
 
 function Header() {
+  const { cartCount } = useContext(CartContext);
+
   return (
     <StyledHeader>
       <Logo>
         <FaRocket />
         <h1>Watto's Spaceship Emporium</h1>
       </Logo>
-      <CartIcon>
+      <CartIcon count={cartCount}>
         <FaDatabase />
       </CartIcon>
     </StyledHeader>
@@ -52,9 +55,10 @@ const Logo = styled.div`
 `;
 
 const CartIcon = styled.div`
+  position: relative;
+  padding: 1rem;
   border-radius: 100px;
   cursor: pointer;
-  padding: 1rem;
   transition: background-color 200ms ease;
 
   &:hover {
@@ -65,4 +69,26 @@ const CartIcon = styled.div`
     height: 2rem;
     width: 2rem;
   }
+
+  ${({ count, theme }) =>
+    count &&
+    `
+    &::after {
+      content: '${count}';
+      position: absolute;
+      top: 7px;
+      right: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      background-color: ${theme.colors.blue};
+      border-radius: 100px;
+      color: ${theme.colors.white};
+      border: 2px solid ${theme.colors.white};
+    }
+  `}
 `;

@@ -1,13 +1,14 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { ProductsProvider } from '../components';
+import { ProductsProvider, CartProvider } from '../components';
 
 const theme = {
   colors: {
     black: '#444445',
     white: '#FEF6E8',
-    grey: 'rgba(68,68,69,0.1)'
+    grey: 'rgba(68,68,69,0.1)',
+    blue: '#0E58ED'
   },
   pillHeight: '2.5rem'
 };
@@ -30,8 +31,10 @@ class MyApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <ProductsProvider>
-            <Component {...pageProps} />
-            <GlobalStyle />
+            <CartProvider>
+              <Component {...pageProps} />
+              <GlobalStyle />
+            </CartProvider>
           </ProductsProvider>
         </ThemeProvider>
       </Container>
