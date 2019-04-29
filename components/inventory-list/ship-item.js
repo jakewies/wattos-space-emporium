@@ -52,6 +52,8 @@ const Container = styled.div`
   flex-direction: column;
   max-width: 500px;
   margin-bottom: 4rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
 
   @media (min-width: ${mobileBreakpoint}) {
     flex-direction: row;
@@ -65,6 +67,7 @@ const Container = styled.div`
 
 const ImageWrapper = styled.div`
   margin-bottom: 2rem;
+  padding: 2rem 0 2rem 2rem;
 
   > img {
     width: 100%;
@@ -74,6 +77,7 @@ const ImageWrapper = styled.div`
     width: 40%;
     margin-bottom: 0;
     margin-right: 2rem;
+    padding: 0;
 
     > img {
       width: 100%;
@@ -86,9 +90,11 @@ const DetailsWrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 0 0 2rem 0;
 
   > div {
     margin-bottom: 1.5rem;
+    padding: 0.5rem;
   }
 
   > div:last-child {
