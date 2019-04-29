@@ -33,7 +33,7 @@ function ShipItem({ id, model, manufacturer, shipClass, credits, inCart }) {
           ) : (
             <ActionButton onClick={handleAddToCart}>Add To Cart</ActionButton>
           )}
-          <Link href={`/product?id=${id}`}>
+          <Link prefetch href={`/product?id=${id}`}>
             <ActionButton>View Specs</ActionButton>
           </Link>
         </ActionsWrapper>
