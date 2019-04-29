@@ -105,7 +105,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     color: ${({ theme }) => theme.colors.black};
     background-color: ${({ theme }) => theme.colors.white};
-    font-size: 16px;
+    font-size: 14px;
+
+    @media (min-width: 900px) {
+      font-size: 16px;
+    }
   }
 
   *,
