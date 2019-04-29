@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 import {
@@ -13,39 +13,34 @@ import { getClasses, getManufacturers } from '../lib/utils';
 
 const ALL = 'All';
 
-function Inventory() {
-  const [inventory, setInventory] = useState([]);
+Inventory.getInitialProps = async () => {
+  const productsSnapshot = await firebase
+    .database()
+    .ref('products')
+    .once('value');
+  const productsMap = productsSnapshot.val();
+  const products = Object.keys(productsMap).map(productId => ({
+    ...productsMap[productId],
+    id: parseInt(productId)
+  }));
+
+  return { products };
+};
+
+function Inventory({ products }) {
   const [classFilter, setClassFilter] = useState(ALL);
   const [manufacturerFilter, setManufacturerFilter] = useState(ALL);
 
-  useEffect(() => {
-    const products = firebase.database().ref('products');
-    products.on('value', snap => {
-      const data = snap.val();
-
-      setInventory(
-        Object.keys(data).map(id => ({
-          ...data[id],
-          id: parseInt(id)
-        }))
-      );
-    });
-
-    return () => {
-      products.off();
-    };
-  }, []);
-
-  const classOptions = getClasses(inventory);
-  const manufacturerOptions = getManufacturers(inventory);
-  const filteredInventory = inventory.filter(spaceship => {
-    if (classFilter !== ALL && spaceship.class !== classFilter) {
+  const classOptions = getClasses(products);
+  const manufacturerOptions = getManufacturers(products);
+  const filteredProducts = products.filter(product => {
+    if (classFilter !== ALL && product.class !== classFilter) {
       return false;
     }
 
     if (
       manufacturerFilter !== ALL &&
-      spaceship.manufacturer !== manufacturerFilter
+      product.manufacturer !== manufacturerFilter
     ) {
       return false;
     }
@@ -79,8 +74,8 @@ function Inventory() {
             <span>Showing 8 results</span>
           </ResultCount>
         </Toolbar>
-        {inventory.length ? (
-          <InventoryList data={filteredInventory} />
+        {products.length ? (
+          <InventoryList data={filteredProducts} />
         ) : (
           <Loading />
         )}
