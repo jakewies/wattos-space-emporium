@@ -17,6 +17,7 @@ function Inventory() {
   const products = useContext(ProductsContext);
   const [classFilter, setClassFilter] = useState(ALL);
   const [manufacturerFilter, setManufacturerFilter] = useState(ALL);
+
   const classOptions = getClasses(products);
   const manufacturerOptions = getManufacturers(products);
 

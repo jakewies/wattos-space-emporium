@@ -8,6 +8,7 @@ const InventoryList = ({ data }) => (
       {data.map(spaceship => (
         <ShipItem
           key={spaceship.id}
+          id={spaceship.id}
           model={spaceship.name}
           manufacturer={spaceship.manufacturer}
           shipClass={spaceship.class}

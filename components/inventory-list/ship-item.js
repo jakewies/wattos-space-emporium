@@ -2,33 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import Detail from './Detail';
 
-const ShipItem = ({ model, manufacturer, shipClass, credits }) => (
+const ShipItem = ({ id, model, manufacturer, shipClass, credits }) => (
   <Container>
-    <ImageWrapper>IMAGE</ImageWrapper>
+    <ImageWrapper>
+      <img src={`/static/images/products/${id}/thumbnail.jpg`} alt={model} />
+    </ImageWrapper>
     <DetailsWrapper>
       <Detail label="Model" value={model} />
       <Detail label="Manufacturer" value={manufacturer} />
       <Detail label="Class" value={shipClass} />
       <Detail label="Credits" value={credits} />
+      <ActionsWrapper>
+        <ActionButton>Add To Order</ActionButton>
+        <ActionButton>View Specs</ActionButton>
+      </ActionsWrapper>
     </DetailsWrapper>
-    <ActionsWrapper>
-      <ActionButton>Add To Order</ActionButton>
-      <ActionButton>View Specs</ActionButton>
-    </ActionsWrapper>
   </Container>
 );
 
 export default ShipItem;
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr auto;
-  grid-gap: 1.5rem;
-  grid-template-areas:
-    'image details'
-    'actions none';
-
+  display: flex;
   margin-bottom: 4rem;
 
   &:last-child {
@@ -37,27 +32,20 @@ const Container = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  grid-area: image;
+  margin-right: 2rem;
 
-  /* dummy image */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 275px;
-  background-color: ${({ theme }) => theme.colors.black};
-  color: ${({ theme }) => theme.colors.white};
+  > img {
+    max-width: 450px;
+  }
 `;
 
 const DetailsWrapper = styled.div`
-  grid-area: details;
-
+  flex: 1;
   display: flex;
   flex-direction: column;
 `;
 
 const ActionsWrapper = styled.div`
-  grid-area: actions;
-
   display: flex;
 `;
 
@@ -66,6 +54,7 @@ const ActionButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 175px;
   height: ${({ theme }) => theme.pillHeight};
   padding: 0 1rem;
   font-size: 0.875rem;
