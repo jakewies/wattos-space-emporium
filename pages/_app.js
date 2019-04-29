@@ -6,7 +6,7 @@ import { ProductsProvider, CartProvider } from '../components';
 const theme = {
   colors: {
     black: '#444445',
-    white: '#FEF6E8',
+    white: '#fff',
     grey: 'rgba(68,68,69,0.1)',
     darkgrey: '#B0AAA0',
     blue: '#0E58ED',
