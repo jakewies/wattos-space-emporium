@@ -48,7 +48,6 @@ function Inventory() {
             options={[ALL, ...classOptions]}
             defaultValue={classFilter}
             onSelect={value => setClassFilter(value)}
-            style={{ marginRight: '1rem' }}
           />
           <Select
             label="Manufacturer"
@@ -74,15 +73,36 @@ function Inventory() {
 
 export default Inventory;
 
+const toolbarBreakpoint = '650px';
+
 const Toolbar = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+
+  > div:first-of-type {
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: ${toolbarBreakpoint}) {
+    flex-direction: row;
+    align-items: center;
+
+    > div:first-of-type {
+      margin-bottom: 0;
+      margin-right: 1rem;
+    }
+  }
 `;
 
 const ResultCount = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
+  display: none;
+
+  @media (min-width: 950px) {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
 
   > span {
     display: flex;
@@ -93,7 +113,7 @@ const ResultCount = styled.div`
     color: ${({ theme }) => theme.colors.white};
     border-radius: 100px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
   }
 `;
 
