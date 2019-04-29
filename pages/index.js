@@ -13,7 +13,7 @@ import { getClasses, getManufacturers } from '../lib/utils';
 const ALL = 'All';
 
 function Inventory() {
-  const products = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
   const [classFilter, setClassFilter] = useState(ALL);
   const [manufacturerFilter, setManufacturerFilter] = useState(ALL);
 

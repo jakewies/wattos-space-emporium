@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Detail = ({ label, value }) => (
-  <StyledDetail>
+const Detail = ({ label, value, highlighted = false }) => (
+  <StyledDetail highlight={highlighted}>
     <Label>{label}</Label>
     <Value>{value}</Value>
   </StyledDetail>
@@ -13,17 +13,16 @@ export default Detail;
 const StyledDetail = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5rem;
   padding: 0.25rem 0;
   font-size: 0.875rem;
 
+  ${({ highlight, theme }) =>
+    highlight &&
+    `
   &:first-child {
-    background-color: ${({ theme }) => theme.colors.grey};
+    background-color: ${theme.colors.grey};
   }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  `}
 `;
 
 const Label = styled.span`

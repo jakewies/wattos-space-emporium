@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
-import Detail from './Detail';
+import Detail from '../detail';
 import { CartContext } from '../cart-context';
 
 function ShipItem({ id, model, manufacturer, shipClass, credits, inCart }) {
@@ -20,7 +21,7 @@ function ShipItem({ id, model, manufacturer, shipClass, credits, inCart }) {
         <img src={`/static/images/products/${id}/thumbnail.jpg`} alt={model} />
       </ImageWrapper>
       <DetailsWrapper>
-        <Detail label="Model" value={model} />
+        <Detail label="Model" value={model} highlighted />
         <Detail label="Manufacturer" value={manufacturer} />
         <Detail label="Class" value={shipClass} />
         <Detail label="Credits" value={credits} />
@@ -32,7 +33,9 @@ function ShipItem({ id, model, manufacturer, shipClass, credits, inCart }) {
           ) : (
             <ActionButton onClick={handleAddToCart}>Add To Cart</ActionButton>
           )}
-          <ActionButton>View Specs</ActionButton>
+          <Link href={`/product?id=${id}`}>
+            <ActionButton>View Specs</ActionButton>
+          </Link>
         </ActionsWrapper>
       </DetailsWrapper>
     </Container>
@@ -82,6 +85,14 @@ const DetailsWrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+
+  > div {
+    margin-bottom: 1.5rem;
+  }
+
+  > div:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const ActionsWrapper = styled.div`

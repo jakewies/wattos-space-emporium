@@ -8,6 +8,9 @@ export const ProductsConsumer = ProductsContext.Consumer;
 export function ProductsProvider({ children }) {
   const [products, setProducts] = useState([]);
 
+  const getProductById = id =>
+    products.find(product => parseInt(product.id) === parseInt(id));
+
   useEffect(() => {
     const productsRef = firebase.database().ref('products');
 
@@ -32,7 +35,7 @@ export function ProductsProvider({ children }) {
   }
 
   return (
-    <ProductsContext.Provider value={products}>
+    <ProductsContext.Provider value={{ products, getProductById }}>
       {children}
     </ProductsContext.Provider>
   );
