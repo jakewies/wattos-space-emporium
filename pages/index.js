@@ -6,7 +6,6 @@ import {
   PageHeader,
   Select,
   InventoryList,
-  Loading,
   ProductsContext
 } from '../components';
 import { getClasses, getManufacturers } from '../lib/utils';
@@ -62,10 +61,12 @@ function Inventory() {
             <span>Showing 8 results</span>
           </ResultCount>
         </Toolbar>
-        {products.length ? (
+        {filteredProducts.length ? (
           <InventoryList data={filteredProducts} />
         ) : (
-          <Loading />
+          <NoProducts>
+            <span>No products found</span>
+          </NoProducts>
         )}
       </Layout>
     </>
@@ -94,5 +95,20 @@ const ResultCount = styled.div`
     border-radius: 100px;
     font-weight: 600;
     font-size: 14px;
+  }
+`;
+
+const NoProducts = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+
+  > span {
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: menlo, monospace, sans-serif;
+    background-color: ${({ theme }) => theme.colors.grey};
+    color: ${({ theme }) => theme.colors.black};
   }
 `;
