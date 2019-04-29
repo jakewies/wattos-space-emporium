@@ -68,7 +68,7 @@ const CartIcon = styled.div`
   transition: background-color 200ms ease;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.grey};
+    background-color: ${({ theme }) => theme.colors.lightgrey};
   }
 
   > svg {

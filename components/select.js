@@ -80,7 +80,7 @@ const SelectWrapper = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.grey};
+  background-color: ${({ theme }) => theme.colors.lightgrey};
   user-select: none;
   white-space: nowrap;
   outline: none;

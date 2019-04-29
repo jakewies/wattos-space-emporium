@@ -44,7 +44,7 @@ function Cart() {
             <Container>
               <CartDetails products={getProductsInCart(products)} />
               <ButtonContainer>
-                <ActionButton onClick={handleUseForce}>
+                <ActionButton onClick={handleUseForce} secondary>
                   Use The Force
                 </ActionButton>
                 <ActionButton onClick={handleBuyWithCredits} primary>
@@ -132,17 +132,6 @@ const ActionButton = styled(Button)`
       margin-right: 1rem;
     }
   }
-
-  ${({ primary = false, theme }) =>
-    primary &&
-    `
-    background-color: ${theme.colors.blue};
-    color: ${theme.colors.white};
-
-    &:hover {
-      background-color: ${theme.colors.darkblue};
-    }
-    `};
 `;
 
 const ModalContainer = styled.div`

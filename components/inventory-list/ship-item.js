@@ -22,7 +22,7 @@ function ShipItem({ id, model, manufacturer, shipClass, credits, inCart }) {
         <img src={`/static/images/products/${id}/thumbnail.jpg`} alt={model} />
       </ImageWrapper>
       <DetailsWrapper>
-        <Detail label="Model" value={model} highlighted />
+        <Detail label="Model" value={model} />
         <Detail label="Manufacturer" value={manufacturer} />
         <Detail label="Class" value={shipClass} />
         <Detail label="Credits" value={credits} />
@@ -32,7 +32,9 @@ function ShipItem({ id, model, manufacturer, shipClass, credits, inCart }) {
               Remove From Cart
             </ActionButton>
           ) : (
-            <ActionButton onClick={handleAddToCart}>Add To Cart</ActionButton>
+            <ActionButton onClick={handleAddToCart} primary>
+              Add To Cart
+            </ActionButton>
           )}
           <Link prefetch href={`/product?id=${id}`}>
             <ActionButton>View Specs</ActionButton>
@@ -95,6 +97,10 @@ const DetailsWrapper = styled.div`
   > div {
     margin-bottom: 1.5rem;
     padding: 0.5rem;
+  }
+
+  > div:first-child {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
   }
 
   > div:last-child {

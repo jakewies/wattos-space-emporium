@@ -29,6 +29,7 @@ const Label = styled.span`
   font-family: menlo, monospace, sans-serif;
   font-size: 0.875em;
   margin-bottom: 0.25em;
+  color: ${({ theme }) => theme.colors.darkgrey};
 `;
 
 const Value = styled.span`

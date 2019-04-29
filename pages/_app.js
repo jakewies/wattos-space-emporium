@@ -5,10 +5,11 @@ import { ProductsProvider, CartProvider } from '../components';
 
 const theme = {
   colors: {
-    black: '#444445',
+    black: '#111',
     white: '#fff',
-    grey: 'rgba(68,68,69,0.1)',
-    darkgrey: '#ccc',
+    lightgrey: '#E8E8E8',
+    grey: '#B9B9B9',
+    darkgrey: '#999999',
     blue: '#0E58ED',
     darkblue: '#0C49C2'
   },

@@ -41,7 +41,7 @@ function Product({ id }) {
             <PageHeader text={product.name} />
             <ProductSpecs product={product} />
             <ButtonContainer>
-              <ActionButton onClick={handleActionClick}>
+              <ActionButton onClick={handleActionClick} primary>
                 {inCart ? 'Remove From Cart' : 'Add To Cart'}
               </ActionButton>
             </ButtonContainer>

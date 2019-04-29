@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Detail from './detail';
 
 const CartDetails = ({ products }) => (
-  <Container>
+  <div>
     {products.map(product => (
       <ProductWrapper key={product.id}>
         <Detail
@@ -15,15 +15,10 @@ const CartDetails = ({ products }) => (
         </CreditsWrapper>
       </ProductWrapper>
     ))}
-  </Container>
+  </div>
 );
 
 export default CartDetails;
-
-const Container = styled.div`
-  padding: 2rem;
-  background: ${({ theme }) => theme.colors.grey};
-`;
 
 const ProductWrapper = styled.div`
   display: flex;
