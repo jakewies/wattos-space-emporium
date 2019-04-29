@@ -18,6 +18,8 @@ function Header() {
 
 export default Header;
 
+const mobileBreakpoint = '650px';
+
 const StyledHeader = styled.header`
   display: flex;
   align-items: center;
@@ -28,9 +30,14 @@ const StyledHeader = styled.header`
 const Logo = styled.div`
   display: inline-flex;
   align-items: center;
-  border: 6px solid ${({ theme }) => theme.colors.black};
+  border: 4px solid ${({ theme }) => theme.colors.black};
   border-radius: 100px;
-  padding: 1.5rem 2rem;
+  padding: 0.875rem 1rem;
+
+  @media (min-width: ${mobileBreakpoint}) {
+    padding: 1.5rem 2rem;
+    border: 6px solid ${({ theme }) => theme.colors.black};
+  }
 
   > svg {
     height: 1.5rem;
