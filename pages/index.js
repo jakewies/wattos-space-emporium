@@ -58,7 +58,7 @@ function Inventory() {
             onSelect={value => setManufacturerFilter(value)}
           />
           <ResultCount>
-            <span>Showing 8 results</span>
+            <span>Showing {filteredProducts.length} results</span>
           </ResultCount>
         </Toolbar>
         {filteredProducts.length ? (
